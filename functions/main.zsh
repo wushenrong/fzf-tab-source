@@ -1,12 +1,11 @@
 # define some functions to avoid any error that these programs don't exist
 # treat bat -lXXX as cat
 # currently, only bat supports highlight --help
+alias -g -- "--help=\\--help | bat -lhelp"
 
 if (($+commands[bat])); then
-  alias -g -- "--help=\\--help | bat -lhelp"
   bat() {command bat --color=always -p $@}
 elif (($+commands[batcat])); then
-  alias -g -- "--help=\\--help | batcat -lhelp"
   bat() {command batcat --color=always -p $@}
 else
   bat() {command cat}
